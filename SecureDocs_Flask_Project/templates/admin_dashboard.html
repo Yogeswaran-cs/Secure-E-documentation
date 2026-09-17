@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body { background: #121212; color: #e0e0e0; font-family: sans-serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #1e1e1e; }
+        th, td { padding: 12px; border: 1px solid #333; text-align: left; }
+        th { background: #2d2d2d; }
+        .btn { background: #007bff; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>E-Portal Admin Dashboard</h1>
+    <a href="{{ url_for('issue_document') }}" class="btn">Issue New Document</a>
+    <a href="{{ url_for('logout') }}" style="color: #ff4d4d; float: right;">Logout</a>
+
+    <h2>All Uploaded Documents</h2>
+    <table>
+        <tr>
+            <th>User ID</th>
+            <th>Filename</th>
+            <th>Token</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {% for doc in documents %}
+        <tr>
+            <td>{{ doc.user_id }}</td>
+            <td>{{ doc.filename }}</td>
+            <td>{{ doc.token[:20] }}...</td>
+            <td><b style="color: green;">{{ doc.status }}</b></td>
+            <td><a href="{{ url_for('document_details', doc_id=doc.id) }}" style="color:#00adb5;">View Details</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

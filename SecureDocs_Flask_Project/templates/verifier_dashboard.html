@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verifier Dashboard</title>
+    <style>
+        body { background: #18191a; color: #e4e6eb; font-family: sans-serif; padding: 20px; }
+        .card { background: #242526; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border-bottom: 1px solid #3a3b3c; text-align: left; }
+    </style>
+</head>
+<body>
+    <h2>Verifier Dashboard</h2>
+    <div class="card">
+        <h3>Recent Verification Activities</h3>
+        <table>
+            <tr><th>USER ID</th><th>FILENAME</th><th>STATUS</th><th>TIMESTAMP</th></tr>
+            {% for act in activities %}
+            <tr>
+                <td>{{ act.user_id }}</td>
+                <td>{{ act.filename }}</td>
+                <td><span style="background:green; padding:3px 8px; border-radius:4px;">{{ act.status }}</span></td>
+                <td>{{ act.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

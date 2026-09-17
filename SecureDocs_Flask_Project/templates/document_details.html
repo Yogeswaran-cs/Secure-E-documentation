@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document Details</title>
+    <style>
+        body { background: #121212; color: #fff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .panel { background: #1e1e1e; padding: 25px; border-radius: 8px; width: 500px; line-height: 1.6; }
+        .badge { background: #28a745; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
+        .btn { display: inline-block; background: #007bff; color: #fff; text-decoration: none; padding: 8px 12px; border-radius: 4px; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <h3>Document Information</h3>
+        <p><strong>Token:</strong> <small>{{ doc.token }}</small></p>
+        <p><strong>Filename:</strong> {{ doc.filename }}</p>
+        <p><strong>Issued For User:</strong> {{ doc.user_id }}</p>
+        <p><strong>Status:</strong> <span class="badge">{{ doc.status }}</span></p>
+        <p><strong>Issued At:</strong> {{ doc.timestamp }}</p>
+        <p><strong>Blockchain TX ID:</strong> <small style="color: #17a2b8;">{{ doc.blockchain_tx_id }}</small></p>
+        <p><strong>Blockchain Timestamp:</strong> {{ doc.blockchain_timestamp }}</p>
+        <a href="{{ url_for('download_file', filename=doc.filename) }}" class="btn">Download Original File</a>
+    </div>
+</body>
+</html>
